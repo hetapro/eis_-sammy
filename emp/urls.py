@@ -1,8 +1,7 @@
 from django.conf.urls import patterns,url
 from emp.views import Department_List,Employee_List
 from emp import views
-from rest_framework.urlpatterns import format_suffix_patterns
-from rest_framework import renderers
+
 dep_list = Department_List.as_view({
     'get': 'list',
     'post': 'create'
@@ -40,5 +39,5 @@ urlpatterns=patterns('',url(r'^$',views.IndexView.as_view(), name="index"),
                         url(r'^update_employee/$',views.Update_employee.as_view(),name="update_employee"),
                         url(r'^index/$',views.Home.as_view(),name="home"),
                      )
-#urlpatterns = format_suffix_patterns(urlpatterns)
+
 

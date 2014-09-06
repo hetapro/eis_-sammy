@@ -12,7 +12,7 @@
         // Main page List of Department
         this.get('#/department_list/', function(context) {
         context.log('Main page-->> List of Department');
-        $("#main").load('/emp/department_list/')
+        $("#main").load('/emp/department_list/',function(){
         $(document).ajaxStart(function(){$("#wait").css("display","block"); });
          $.ajax({
                      url: "/emp/department/",
@@ -45,13 +45,13 @@
                        console.log("Status: " + status);
                      }
 
-            });$(document).ajaxComplete(function(){ $("#wait").css("display","none");  });
+            });$(document).ajaxComplete(function(){ $("#wait").css("display","none");  });  });
            });
 
            // View details of department
          this.get('#/view_details/:id/?:name?/', function(context) {
         context.log('View Details of department');
-              $("#main").load('/emp/view_details/');
+              $("#main").load('/emp/view_details/',function(){
          var pk=context.params.id; var name=context.params.name;
          $(document).ajaxStart(function(){$("#wait").css("display","block"); });
         $.ajax({
@@ -81,7 +81,7 @@
                        console.log("Error: " + errorThrown);
                        console.log("Status: " + status);
                      }
-        });$(document).ajaxComplete(function(){ $("#wait").css("display","none");  });
+        });$(document).ajaxComplete(function(){ $("#wait").css("display","none");  });   });
            });
 
         // Update department details
@@ -268,7 +268,7 @@
          // Main page List of Employee
         this.get('#/employee_list/', function(context) {
         context.log('Main page-->> List of Employee');
-        $("#main").load('/emp/employee_list/')
+        $("#main").load('/emp/employee_list/',function(){
         $(document).ajaxStart(function(){$("#wait").css("display","block"); });
          $.ajax({
                 url: "/emp/employee/",
@@ -312,7 +312,7 @@
                 console.log("Sorry, there was a problem!");
                 console.log("Error: " + errorThrown);
                 console.log("Status: " + status);       }  });
-            $(document).ajaxComplete(function(){ $("#wait").css("display","none");  });
+            $(document).ajaxComplete(function(){ $("#wait").css("display","none");  });  });
            });
 
          // Add new Employee
@@ -432,7 +432,7 @@
           // View details of employee
          this.get('#/employee_detail/:id?/?:name?/', function(context) {
         context.log('view details of employee');
-        $("#main").load('/emp/employee_detail/');
+        $("#main").load('/emp/employee_detail/',function(){
         var pk=context.params.id; var name=context.params.name;
           $(document).ajaxStart(function(){     $("#wait").css("display","block");       });
          $.ajax({
@@ -463,7 +463,7 @@
                     console.log("Error: " + errorThrown);
                     console.log("Status: " + status);
                 }
-         }); $(document).ajaxComplete(function(){ $("#wait").css("display","none");  });
+         }); $(document).ajaxComplete(function(){ $("#wait").css("display","none");  });    });
            });
 
          // Update employee details
